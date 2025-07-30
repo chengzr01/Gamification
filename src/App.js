@@ -1,7 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import logo from "./logo.svg";
+import "./App.css";
 
-function App() {
+import User from "./components/user";
+
+function Home() {
   return (
     <div className="App">
       <header className="App-header">
@@ -19,6 +23,17 @@ function App() {
         </a>
       </header>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/user" element={<User />} />
+      </Routes>
+    </Router>
   );
 }
 
