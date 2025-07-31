@@ -44,6 +44,8 @@ const Rules = ({ gameState, setGameState, gameContext, setGameContext }) => {
         padding: "20px",
         borderRadius: "8px",
         marginBottom: "20px",
+        maxWidth: "800px",
+        width: "100%",
       }}
     >
       <h2>Game Configuration</h2>
@@ -57,12 +59,26 @@ const Rules = ({ gameState, setGameState, gameContext, setGameContext }) => {
         ))}
       </div>
 
-      <div style={{ marginBottom: "15px" }}>
-        <h3>Case Configuration</h3>
-        <div style={{ marginBottom: "10px" }}>
+      <div style={{ marginBottom: "20px" }}>
+        <h3
+          style={{
+            fontSize: "1.5rem",
+            color: "#2c3e50",
+            marginBottom: "15px",
+          }}
+        >
+          Case Configuration
+        </h3>
+        <div style={{ marginBottom: "15px" }}>
           <label
             htmlFor="caseDetails"
-            style={{ display: "block", marginBottom: "5px" }}
+            style={{
+              display: "block",
+              marginBottom: "8px",
+              fontSize: "1rem",
+              color: "#34495e",
+              fontWeight: "500",
+            }}
           >
             Case Details:
           </label>
@@ -72,19 +88,28 @@ const Rules = ({ gameState, setGameState, gameContext, setGameContext }) => {
             onChange={(e) => setCaseDetails(e.target.value)}
             style={{
               width: "100%",
-              padding: "8px",
-              borderRadius: "4px",
-              border: "1px solid #ddd",
-              minHeight: "100px",
+              padding: "12px",
+              borderRadius: "6px",
+              border: "1px solid #cbd5e0",
+              minHeight: "120px",
+              fontSize: "0.95rem",
+              fontFamily: "inherit",
+              resize: "none",
             }}
             placeholder="Enter the details of the case..."
           />
         </div>
 
-        <div style={{ marginBottom: "10px" }}>
+        <div style={{ marginBottom: "15px" }}>
           <label
             htmlFor="legalQuestion"
-            style={{ display: "block", marginBottom: "5px" }}
+            style={{
+              display: "block",
+              marginBottom: "8px",
+              fontSize: "1rem",
+              color: "#34495e",
+              fontWeight: "500",
+            }}
           >
             Legal Question:
           </label>
@@ -95,18 +120,26 @@ const Rules = ({ gameState, setGameState, gameContext, setGameContext }) => {
             onChange={(e) => setLegalQuestion(e.target.value)}
             style={{
               width: "100%",
-              padding: "8px",
-              borderRadius: "4px",
-              border: "1px solid #ddd",
+              padding: "12px",
+              borderRadius: "6px",
+              border: "1px solid #cbd5e0",
+              fontSize: "0.95rem",
+              fontFamily: "inherit",
             }}
             placeholder="Enter the legal question to be resolved..."
           />
         </div>
 
-        <div style={{ marginBottom: "10px" }}>
+        <div style={{ marginBottom: "15px" }}>
           <label
             htmlFor="justiceModel"
-            style={{ display: "block", marginBottom: "5px" }}
+            style={{
+              display: "block",
+              marginBottom: "8px",
+              fontSize: "1rem",
+              color: "#34495e",
+              fontWeight: "500",
+            }}
           >
             Justice Model:
           </label>
@@ -117,9 +150,11 @@ const Rules = ({ gameState, setGameState, gameContext, setGameContext }) => {
             onChange={(e) => setJusticeModel(e.target.value)}
             style={{
               width: "100%",
-              padding: "8px",
-              borderRadius: "4px",
-              border: "1px solid #ddd",
+              padding: "12px",
+              borderRadius: "6px",
+              border: "1px solid #cbd5e0",
+              fontSize: "0.95rem",
+              fontFamily: "inherit",
             }}
             placeholder="Enter the justice model to be applied..."
           />

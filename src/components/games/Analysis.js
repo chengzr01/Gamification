@@ -18,13 +18,10 @@ const GameStatistics = ({ transcript }) => (
 );
 
 const PedagogicalMetrics = ({ transcript }) => {
-  // Helper function to analyze argument quality
   const analyzeArgumentQuality = (messages) => {
-    // Placeholder implementation
-    return "Medium"; // Could be Low, Medium, High based on actual analysis
+    return "Medium";
   };
 
-  // Helper function to measure engagement level
   const measureEngagement = (messages) => {
     const avgMessageLength =
       messages.reduce((acc, msg) => acc + msg.content.length, 0) /

@@ -1,56 +1,5 @@
 import React, { useState } from "react";
-
-const GameStateBar = ({ gameState, currentRole, gameContext }) => (
-  <>
-    <div
-      style={{
-        padding: "10px 20px",
-        backgroundColor: "#f8f9fa",
-        borderBottom: "1px solid #ddd",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-      }}
-    >
-      <div>
-        <strong>Game Status:</strong>{" "}
-        {gameState.isTerminated ? "Ended" : "In Progress"}
-      </div>
-      <div>
-        <strong>Sender Score:</strong> {gameState.senderPayoff}
-      </div>
-      <div>
-        <strong>Receiver Score:</strong> {gameState.receiverPayoff}
-      </div>
-    </div>
-    <div
-      style={{
-        padding: "10px 20px",
-        backgroundColor: "#f8f9fa",
-        borderBottom: "1px solid #ddd",
-      }}
-    >
-      <div>
-        <strong>Case Details:</strong> {gameContext.caseDetails}
-      </div>
-      <div>
-        <strong>Legal Question:</strong> {gameContext.legalQuestion}
-      </div>
-      <div>
-        <strong>Justice Model:</strong> {gameContext.justiceModel}
-      </div>
-    </div>
-    <div
-      style={{
-        marginTop: "20px",
-        textAlign: "center",
-        color: "#666",
-      }}
-    >
-      Current Turn: {currentRole.charAt(0).toUpperCase() + currentRole.slice(1)}
-    </div>
-  </>
-);
+import GameStateBar from "./Bar";
 
 const MessageBubble = ({ message }) => (
   <div
