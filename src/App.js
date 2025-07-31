@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import logo from "./logo.svg";
 import "./App.css";
 
-import User from "./components/user";
+import User from "./pages/User";
+import Game from "./pages/Game";
 
 function Home() {
   return (
@@ -31,6 +32,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/game" element={<Game />} />
         <Route path="/user" element={<User />} />
       </Routes>
     </Router>
