@@ -1,203 +1,96 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-const Rules = ({ gameState, setGameState, gameContext, setGameContext }) => {
-  const [caseDetails, setCaseDetails] = useState("");
-  const [legalQuestion, setLegalQuestion] = useState("");
-  const [justiceModel, setJusticeModel] = useState("");
+/**
+ * Rules component
+ *
+ * Presents the rules of the Persuasion game and allows the user to
+ * review and optionally modify the case details, legal question and
+ * justice model.  The initial values of these fields are derived
+ * from the gameContext provided by the parent component.  When the
+ * user confirms their inputs the updated context is bubbled up via
+ * the supplied setter.
+ */
+export default function Rules({ gameState, setGameState, gameContext, setGameContext }) {
+  // Seed state from the provided context so that existing case
+  // information is visible to the user
+  const [caseDetails, setCaseDetails] = useState(gameContext.caseDetails || '');
+  const [legalQuestion, setLegalQuestion] = useState(gameContext.legalQuestion || '');
+  const [justiceModel, setJusticeModel] = useState(gameContext.justiceModel || '');
 
   const rules = [
-    "Welcome to Persuasion - A Game of Communication and Influence",
-    "1. There are two players: the Sender and the Receiver",
+    'Welcome to Persuasion – A Game of Communication and Influence',
+    '1. There are two players: the Sender and the Receiver',
     "2. The Sender's goal is to persuade the Receiver to accept their proposal",
-    "3. The Receiver must critically evaluate the Sender's arguments",
-    "4. Players take turns sending messages in the chat interface",
-    "5. The game ends when either:",
-    "   - The Receiver accepts the proposal",
-    "   - The Receiver definitively rejects the proposal",
-    "   - Maximum rounds (3) are reached",
+    '3. The Receiver must critically evaluate the Sender\'s arguments',
+    '4. Players take turns sending messages in the chat interface',
+    '5. The game ends when either:\n   - The Receiver accepts the proposal\n   - The Receiver definitively rejects the proposal\n   - Maximum rounds (3) are reached',
   ];
 
+  // Commit the current case configuration into the parent context
   const handleConfirm = () => {
-    const newGameContext = {
+    setGameContext({
+      ...gameContext,
       caseDetails,
       legalQuestion,
       justiceModel,
-    };
-    setGameContext(newGameContext);
+    });
   };
 
   const handleClear = () => {
-    setCaseDetails("");
-    setLegalQuestion("");
-    setJusticeModel("");
+    setCaseDetails('');
+    setLegalQuestion('');
+    setJusticeModel('');
     setGameContext({
-      caseDetails: "",
-      legalQuestion: "",
-      justiceModel: "",
+      caseDetails: '',
+      legalQuestion: '',
+      justiceModel: '',
+      advocateResponse: gameContext.advocateResponse,
     });
   };
 
   return (
-    <div
-      style={{
-        backgroundColor: "#f5f5f5",
-        padding: "20px",
-        borderRadius: "8px",
-        marginBottom: "20px",
-        maxWidth: "800px",
-        width: "100%",
-      }}
-    >
+    <div className="rules-section">
       <h2>Game Configuration</h2>
-
-      <div style={{ marginBottom: "20px" }}>
+      <div className="rules-list">
         <h3>Game Rules</h3>
-        {rules.map((rule, index) => (
-          <p key={index} style={{ margin: "10px 0" }}>
-            {rule}
-          </p>
-        ))}
+        <ul>
+          {rules.map((rule, index) => (
+            <li key={index}>{rule}</li>
+          ))}
+        </ul>
       </div>
-
-      <div style={{ marginBottom: "20px" }}>
-        <h3
-          style={{
-            fontSize: "1.5rem",
-            color: "#2c3e50",
-            marginBottom: "15px",
-          }}
-        >
-          Case Configuration
-        </h3>
-        <div style={{ marginBottom: "15px" }}>
-          <label
-            htmlFor="caseDetails"
-            style={{
-              display: "block",
-              marginBottom: "8px",
-              fontSize: "1rem",
-              color: "#34495e",
-              fontWeight: "500",
-            }}
-          >
-            Case Details:
-          </label>
+      <div className="case-configuration">
+        <h3>Case Configuration</h3>
+        <div>
+          <label>Case Details:</label>
           <textarea
-            id="caseDetails"
             value={caseDetails}
             onChange={(e) => setCaseDetails(e.target.value)}
-            style={{
-              width: "100%",
-              padding: "12px",
-              borderRadius: "6px",
-              border: "1px solid #cbd5e0",
-              minHeight: "120px",
-              fontSize: "0.95rem",
-              fontFamily: "inherit",
-              resize: "none",
-            }}
             placeholder="Enter the details of the case..."
           />
         </div>
-
-        <div style={{ marginBottom: "15px" }}>
-          <label
-            htmlFor="legalQuestion"
-            style={{
-              display: "block",
-              marginBottom: "8px",
-              fontSize: "1rem",
-              color: "#34495e",
-              fontWeight: "500",
-            }}
-          >
-            Legal Question:
-          </label>
-          <input
-            type="text"
-            id="legalQuestion"
+        <div>
+          <label>Legal Question:</label>
+          <textarea
             value={legalQuestion}
             onChange={(e) => setLegalQuestion(e.target.value)}
-            style={{
-              width: "100%",
-              padding: "12px",
-              borderRadius: "6px",
-              border: "1px solid #cbd5e0",
-              fontSize: "0.95rem",
-              fontFamily: "inherit",
-            }}
             placeholder="Enter the legal question to be resolved..."
           />
         </div>
-
-        <div style={{ marginBottom: "15px" }}>
-          <label
-            htmlFor="justiceModel"
-            style={{
-              display: "block",
-              marginBottom: "8px",
-              fontSize: "1rem",
-              color: "#34495e",
-              fontWeight: "500",
-            }}
-          >
-            Justice Model:
-          </label>
+        <div>
+          <label>Justice Model:</label>
           <input
             type="text"
-            id="justiceModel"
             value={justiceModel}
             onChange={(e) => setJusticeModel(e.target.value)}
-            style={{
-              width: "100%",
-              padding: "12px",
-              borderRadius: "6px",
-              border: "1px solid #cbd5e0",
-              fontSize: "0.95rem",
-              fontFamily: "inherit",
-            }}
             placeholder="Enter the justice model to be applied..."
           />
         </div>
-
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-            gap: "10px",
-            marginTop: "20px",
-          }}
-        >
-          <button
-            onClick={handleClear}
-            style={{
-              padding: "8px 16px",
-              backgroundColor: "#dc3545",
-              color: "white",
-              border: "none",
-              borderRadius: "4px",
-              cursor: "pointer",
-            }}
-          >
-            Clear
-          </button>
-          <button
-            onClick={handleConfirm}
-            style={{
-              padding: "8px 16px",
-              backgroundColor: "#28a745",
-              color: "white",
-              border: "none",
-              borderRadius: "4px",
-              cursor: "pointer",
-            }}
-          >
-            Confirm
-          </button>
+        <div className="button-row">
+          <button type="button" onClick={handleClear}>Clear</button>
+          <button type="button" onClick={handleConfirm}>Confirm</button>
         </div>
       </div>
     </div>
   );
-};
-
-export default Rules;
+}

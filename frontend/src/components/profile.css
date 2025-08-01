@@ -1,0 +1,91 @@
+/* Container layout */
+.profile-container {
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  color: var(--text-color);
+  background: var(--bg-color);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
+}
+
+/* Back link */
+.back-link {
+  align-self: flex-start;
+  margin-bottom: 1.5rem;
+  color: var(--link-color);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* Card styling */
+.profile-card {
+  width: 100%;
+  max-width: 800px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 2rem;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 2rem;
+  align-items: center;
+}
+
+/* Header (left column) */
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.profile-name {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin: 0;
+}
+.profile-email,
+.profile-winrate,
+.profile-games,
+.profile-avgtime {
+  margin: 0.25rem 0;
+  font-weight: 500;
+  font-size: 1rem;
+}
+.accent {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+/* Chart (right column) */
+.profile-chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-chart svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Responsive tweaks */
+@media (max-width: 640px) {
+  .profile-card {
+    grid-template-columns: 1fr;
+    row-gap: 2rem;
+  }
+  .profile-chart {
+    justify-content: center;
+  }
+}
+
+.profile-name {
+  margin-bottom: 2rem;
+}
