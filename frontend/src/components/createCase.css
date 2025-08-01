@@ -1,0 +1,49 @@
+/* Styling for the Create Case form */
+.create-case-page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  
+  .create-case-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .create-case-form label {
+    margin-top: 1rem;
+    font-weight: bold;
+  }
+  
+  .create-case-form input,
+  .create-case-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.25rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: var(--input-bg, #f9f9f9);
+    color: inherit;
+  }
+  
+  .create-case-form textarea {
+    resize: vertical;
+  }
+  
+  .create-case-form button {
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #007acc;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    align-self: flex-start;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease;
+  }
+  
+  .create-case-form button:hover {
+    background-color: #005fa3;
+  }
